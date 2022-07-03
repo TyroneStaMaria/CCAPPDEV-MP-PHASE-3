@@ -14,7 +14,7 @@ const s3 = new S3Client({
 const uploadStorage = multer({
   storage: multerS3({
     s3: s3,
-    bucket: "ccs-repo",
+    bucket: process.env.S3_BUCKET_NAME,
     contentType: multerS3.AUTO_CONTENT_TYPE,
     metadata: (req, file, cb) => {
       cb(null, { fieldName: file.fieldname });
